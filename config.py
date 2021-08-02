@@ -107,25 +107,25 @@ if MariaDB == True:
 
 #Overclock
 if Overclock == True:
-  if overclock == "Modest"
+  if overclock == "Modest":
   Ex("set_config_var arm_freq" + 800)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 400)
   Ex("set_config_var over_voltage" + 0)
   
-  elif overclock == "Medium"
+  elif overclock == "Medium":
   Ex("set_config_var arm_freq" + 900)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 450)
   Ex("set_config_var over_voltage" + 2)
   
-  elif overclock == "High"
+  elif overclock == "High":
   Ex("set_config_var arm_freq" + 950)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 450)
   Ex("set_config_var over_voltage" + 6)
   
-  elif overclock == "Turbo"
+  elif overclock == "Turbo":
   Ex("set_config_var arm_freq" + 1000)
   Ex("set_config_var core_freq" + 500)
   Ex("set_config_var sdram_freq" + 600)
