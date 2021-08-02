@@ -2,7 +2,7 @@
 
 #Software Update
 UpdateUpgrade = False
-Reboot        = True #Recommended always be True
+Reboot        = False #Recommended always be True
 
 #Raspberry configs
 SSH           = False
@@ -10,11 +10,11 @@ VNC           = False
 Camera        = False
 Overscan      = False #Enable if you see black edges
 Hostname      = False #Reboot forced
-hostname      = "raspberry2"
+hostname      = "argon"
 Overclock     = False
-overclock     = "None" #Modest|Medium|High|Turbo Currently only for Pi4
+overclock     = "Modest" #Modest|Medium|High|Turbo Currently only for Pi4
 Timezone      = False
-timezone      = "Europe/Spain" #run "timedatectl list-timezones" for a list
+timezone      = "Europe/Madrid" #run "timedatectl list-timezones" for a list
 Keyboard      = False #Change keyboard layout
 keyboard      = "es" #es = Spanish | gb = British
 Wifi          = False #Adding new wifi
@@ -27,7 +27,7 @@ Argon         = False
 Moonlight     = False
 Firefox       = False
 MariaDB       = False #Includes initial setup. Removes test DB and sets new root password
-mariadb_pass  = "****"
+mariadb_pass  = "newpassword"
 
 #Packages
 PySimpleGui   = False
@@ -97,8 +97,8 @@ if PySimpleGui == True:
 #MariaDB
 if MariaDB == True:
   Ex("sudo apt-get -y install mariadb-server")
-  Ex("sudo mysql -e 'UPDATE mysql.user SET Password = PASSWORD('" + mariadb_pass + "') WHERE User = 'root''")
-  Ex("sudo mysql -e 'DROP USER IF EXISTS ''@'localhost''")
+  Ex("sudo mysql -e \"UPDATE mysql.user SET Password = PASSWORD(\'" + mariadb_pass + "\') WHERE User = \'root\'\"")
+  Ex("sudo mysql -e \"DROP USER IF EXISTS ''@'localhost'\"")
   Ex("sudo mysql -e 'DROP DATABASE IF EXISTS test'")
 
 #Overclock
