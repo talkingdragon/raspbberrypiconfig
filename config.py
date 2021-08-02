@@ -53,15 +53,15 @@ if Hostname = True:
 
 #SSH
 if SSH = True:
-  Ex("sudo raspi-config nonint do_ssh 1") #need verify is 1 is on
+  Ex("sudo raspi-config nonint do_ssh 0")
 
 #VNC
 if VNC = True:
-  Ex("sudo raspi-config nonint do_vnc 1") #need verify is 1 is on
+  Ex("sudo raspi-config nonint do_vnc 0")
 
 #Camera
 if Camera = True:
-  Ex("sudo raspi-config nonint do_camera 1") #need verify is 1 is on
+  Ex("sudo raspi-config nonint do_camera 0")
 
 #Moonlight
 if Moonlight = True:
