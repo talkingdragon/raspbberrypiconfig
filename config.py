@@ -11,7 +11,7 @@ Overscan      = False #Enable if you see black edges
 Hostname      = False #Reboot forced
 hostname      = "raspberry2"
 Overclock     = False
-overclock     = None #None|Modest|Medium|High|Turbo Currently only for Pi4
+overclock     = "None" #Modest|Medium|High|Turbo Currently only for Pi4
 TimeZone      = False
 timezone      = "Europe/Spain" #run "timedatectl list-timezones" for a list
 Keyboard      = False #Change keyboard layout
@@ -43,7 +43,7 @@ def Ex(cmd):
   sleep(5)
   
 #apt update & upgrade
-if UpdateUpgrade = True:
+if UpdateUpgrade == True:
   Ex("sudo apt-get update")
   Ex("sudo apt-get -y upgrade")
 
@@ -107,25 +107,25 @@ if MariaDB == True:
 
 #Overclock
 if Overclock == True:
-  if overclock == Modest
+  if overclock == "Modest"
   Ex("set_config_var arm_freq" + 800)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 400)
   Ex("set_config_var over_voltage" + 0)
   
-  elif overclock == Medium
+  elif overclock == "Medium"
   Ex("set_config_var arm_freq" + 900)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 450)
   Ex("set_config_var over_voltage" + 2)
   
-  elif overclock == High
+  elif overclock == "High"
   Ex("set_config_var arm_freq" + 950)
   Ex("set_config_var core_freq" + 250)
   Ex("set_config_var sdram_freq" + 450)
   Ex("set_config_var over_voltage" + 6)
   
-  elif overclock == Turbo
+  elif overclock == "Turbo"
   Ex("set_config_var arm_freq" + 1000)
   Ex("set_config_var core_freq" + 500)
   Ex("set_config_var sdram_freq" + 600)
