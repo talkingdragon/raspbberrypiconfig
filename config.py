@@ -2,6 +2,7 @@
 
 #Software Update
 UpdateUpgrade = False
+Reboot        = True #Recommended always be True
 
 #Raspberry configs
 SSH           = False
@@ -12,7 +13,7 @@ Hostname      = False #Reboot forced
 hostname      = "raspberry2"
 Overclock     = False
 overclock     = "None" #Modest|Medium|High|Turbo Currently only for Pi4
-TimeZone      = False
+Timezone      = False
 timezone      = "Europe/Spain" #run "timedatectl list-timezones" for a list
 Keyboard      = False #Change keyboard layout
 keyboard      = "es" #es = Spanish | gb = British
@@ -47,15 +48,10 @@ if UpdateUpgrade == True:
   Ex("sudo apt-get update")
   Ex("sudo apt-get -y upgrade")
 
-#Change HostName
-if Hostname == True:
-  Ex("raspi-config nonint do_hostname " + hostname)
-
 #Wifi
 if Wifi == True:
   Ex("raspi-config nonint do_wifi_country " + country)
   Ex("raspi-config nonint do_wifi_ssid_passphrase " + ssid + " " + ssid_pass)
-
 
 #Timezone
 if Timezone == True:
@@ -108,25 +104,33 @@ if MariaDB == True:
 #Overclock
 if Overclock == True:
   if overclock == "Modest":
-  Ex("set_config_var arm_freq" + 800)
-  Ex("set_config_var core_freq" + 250)
-  Ex("set_config_var sdram_freq" + 400)
-  Ex("set_config_var over_voltage" + 0)
+    Ex("set_config_var arm_freq" + 800)
+    Ex("set_config_var core_freq" + 250)
+    Ex("set_config_var sdram_freq" + 400)
+    Ex("set_config_var over_voltage" + 0)
   
   elif overclock == "Medium":
-  Ex("set_config_var arm_freq" + 900)
-  Ex("set_config_var core_freq" + 250)
-  Ex("set_config_var sdram_freq" + 450)
-  Ex("set_config_var over_voltage" + 2)
+    Ex("set_config_var arm_freq" + 900)
+    Ex("set_config_var core_freq" + 250)
+    Ex("set_config_var sdram_freq" + 450)
+    Ex("set_config_var over_voltage" + 2)
   
   elif overclock == "High":
-  Ex("set_config_var arm_freq" + 950)
-  Ex("set_config_var core_freq" + 250)
-  Ex("set_config_var sdram_freq" + 450)
-  Ex("set_config_var over_voltage" + 6)
+    Ex("set_config_var arm_freq" + 950)
+    Ex("set_config_var core_freq" + 250)
+    Ex("set_config_var sdram_freq" + 450)
+    Ex("set_config_var over_voltage" + 6)
   
   elif overclock == "Turbo":
-  Ex("set_config_var arm_freq" + 1000)
-  Ex("set_config_var core_freq" + 500)
-  Ex("set_config_var sdram_freq" + 600)
-  Ex("set_config_var over_voltage" + 6)
+    Ex("set_config_var arm_freq" + 1000)
+    Ex("set_config_var core_freq" + 500)
+    Ex("set_config_var sdram_freq" + 600)
+    Ex("set_config_var over_voltage" + 6)
+
+#Change HostName
+if Hostname == True:
+  Ex("raspi-config nonint do_hostname " + hostname)
+
+#Reboot
+if Reboot == True or Hostname == True:
+  Ex("sudo reboot")
